@@ -1,3 +1,3 @@
-export default {
-    apiBaseUrl : "http://localhost:9000/"
-}
+const configs = require('../../conf-'+process.env.configs).default;
+
+export default configs;

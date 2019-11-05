@@ -5,12 +5,15 @@
   "main": "src/server.js",
   "repository": "git@github.com:lmammino/judo-heroes.git",
   "scripts": {
-    "start": "cross-env NODE_ENV=production node_modules/.bin/babel-node --presets react,es2015 src/server.js",
+    "start:local": "cross-env NODE_ENV=production configs=local node_modules/.bin/babel-node --presets react,es2015 src/server.js",
     "start-dev": "npm run start-dev-hmr",
     "start-dev-single-page": "node_modules/.bin/http-server src/static",
     "start-dev-hmr": "node_modules/.bin/webpack-dev-server --progress --colors --hot --config ./webpack.config.js --inline",
-    "build": "cross-env NODE_ENV=production node_modules/.bin/webpack -p" ,
-    "gulp" : "gulp default"
+    "build:local": "cross-env NODE_ENV=production configs=local node_modules/.bin/webpack -p" ,
+    "gulp" : "gulp default",
+  
+    "start:prod": "cross-env NODE_ENV=production configs=prod node_modules/.bin/babel-node --presets react,es2015 src/server.js",
+    "build:prod": "cross-env NODE_ENV=production configs=prod node_modules/.bin/webpack -p" 
   },
   "author": "Luciano Mammino",
   "license": "MIT",
