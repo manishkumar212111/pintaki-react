@@ -2,8 +2,9 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AppRoutes from './components/AppRoutes';
+import {hydrate} from 'react-dom'
+import AppRoutes from './pt/AppRoutes';
 
 window.onload = () => {
-  ReactDOM.render(<AppRoutes/>, document.getElementById('main'));
+  hydrate(<AppRoutes/>, document.getElementById('main'));
 };
