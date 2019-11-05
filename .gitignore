@@ -40,4 +40,4 @@ jspm_packages
 babel_cache
 
 # JS file 
-src/static/js/*
+/src/static/js/*
