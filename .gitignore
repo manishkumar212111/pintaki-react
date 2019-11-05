@@ -38,3 +38,6 @@ jspm_packages
 
 # Babel cache directory
 babel_cache
+
+# JS file 
+src/static/js/*
