@@ -68,7 +68,12 @@ export default class IndexPage extends React.Component {
 		this.fetchData = this.fetchData.bind(this);
 	}
 	componentDidMount(){
-		this.fetchData(this.props);
+		if(window.__INITIAL_STATE__ == null)
+			this.fetchData(this.props);
+		else
+			this.setState(window.__INITIAL_STATE__);
+		
+		window.__INITIAL_STATE__ = null;
 	}
 
 	handleTabinClick(index , $selector){

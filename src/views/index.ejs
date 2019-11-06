@@ -12,12 +12,14 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/fonts.css">
   </head>
+  <script>
+    window.__INITIAL_STATE__ = <%- JSON.stringify(data) %>;
+  </script>
+  
   <body>
     <div id="main"><%- markup -%></div>
     
-    <script>
-        window.__INITIAL_STATE__ = <%- JSON.stringify(data) %>;
-    </script>
+    
     <script src="/js/bundle.js" defer>
     </script>
     <%if (data.chunkJs) { %><script src="/js/<%- data.chunkJs + '.bundle.js' -%>" defer></script><% } %>
