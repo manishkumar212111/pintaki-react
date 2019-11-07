@@ -25,7 +25,7 @@ const API  = {
           }
       })
       .catch((error) => {
-          console.error("API ERR: ", new Date().toString(), error.code, error.toString(), o + '&' +  qs);
+          console.error("API ERR: ", new Date().toString(), error.code, error.toString(), o + '&' +  o.qs);
           return {error:true, errMsg: error.toString(), errorResp: error};
         });    
     },

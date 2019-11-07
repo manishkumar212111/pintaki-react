@@ -5,7 +5,7 @@ const routesConfigs = [
     { name: "Home", path: "/", component: "IndexPage" },
     { name: "ProjectListing" , path:"/projects/list(/:page)" , component : "ProjectListing"},
     { name: "BlogListing" , path:"/blogs/list(/:page)" , component : "BlogListing"},    
-    
+    { name: "503 error" , path:"/503" , component: "ErrorPage"},
     { name:"" , path: "*" , component : "NotFoundPage"}
 ]
 
@@ -27,7 +27,12 @@ const asyncLoad = function (component , callback) {
             return require.ensure([], require => {
                 callback(null, require('../pt/pages/BlogListing').default)
             }, 'BlogListing');
-            
+        
+        case 'ErrorPage':    
+            return require.ensure([], require => {
+                callback(null, require('../pt/pages/ErrorPage').default)
+            }, 'ErrorPage');
+
         case 'NotFoundPage':    
             return require.ensure([], require => {
                     callback(null, require('../pt/pages/NotFoundPage').default)

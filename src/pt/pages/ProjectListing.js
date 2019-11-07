@@ -45,6 +45,9 @@ var getAPIResponse = (props ,cb) => {
 	})
 }
 
+const contextTypes = {
+    data: PropTypes.object
+};
 export default class ProjectListing extends React.Component {
     static fetchData(props, cb) {
         // getApiResponse(props, function(res) {
@@ -67,9 +70,9 @@ export default class ProjectListing extends React.Component {
 		})
 	}
     
-    constructor(props){
-        super(props);
-        this.state = props;
+    constructor(props , context){
+        super(props , context);
+        this.state = this.context.data || props;
 		this.fetchData = this.fetchData.bind(this);
     }
     componentDidMount(){
@@ -113,3 +116,6 @@ export default class ProjectListing extends React.Component {
         )
     }
 }  
+
+ProjectListing.contextTypes = contextTypes;
+ProjectListing.defaultProps = defaultProps;

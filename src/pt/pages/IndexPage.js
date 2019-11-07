@@ -19,12 +19,12 @@ const defaultProps = {
 }
 var getData = (res) => {
 	let o = {
+		activeIndex : 0,
 		seo : res.data.seo ? res.data.seo : defaultProps.seo,
 		projects : res.data.projects ? res.data.projects : defaultProps.projects,
 		shimmer : false,
 		blogs : res.data.blogs ? res.data.blogs : defaultProps.blogs,
 		chunkJs : 'IndexPage'
-
 	};
 	return o;
 }
@@ -32,12 +32,11 @@ var getData = (res) => {
 var getAPIResponse = (props ,cb) => {
 	API.getApi('HomeAPI' , {} , false).then((res) =>{
 		if(res.status === 200 && res.data){
-			
 			cb(getData(res));
 		}
 		else{
 			console.log("API ERROR AT HOMEPAGE");
-			cb({error : true});
+			cb({error : true, errorResp : "Invalid Response" });
 		}
 	})
 }
@@ -61,13 +60,14 @@ export default class IndexPage extends React.Component {
 		})
 	}
 	
-	constructor(props){
-		super(props);
-		this.state = defaultProps;
+	constructor(props , context){
+		super(props , context);
+		this.state = this.context.data || defaultProps;
 		this.handleTabinClick = this.handleTabinClick.bind(this);
 		this.fetchData = this.fetchData.bind(this);
 	}
 	componentDidMount(){
+		console.log(this.context)
 		if(window.__INITIAL_STATE__ == null)
 			this.fetchData(this.props);
 		else

@@ -2,8 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8"/>
-    <meta charset="utf-8"><title itemprop="name"><%= data.seo.title %></title>
-    <meta name="description" itemprop="description" content="<%= data.seo.pageDescription %>">
+    <% if(locals.data.title) {%><meta charset="utf-8"><title itemprop="name"><%= data.seo.title %></title>
+      <meta name="description" itemprop="description" content="<%= data.seo.pageDescription %>">
+    <%} %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Judo Heroes - A Universal JavaScript demo application with React</title>
     <link rel="stylesheet" href="/css/font-awesome.min.css">
