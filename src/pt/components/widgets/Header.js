@@ -1,6 +1,7 @@
 import React, {Fragment}  from 'react';
 import CLink from '../elements/CLink';
 import {menuMobile ,menuDesktop} from '../../../data/menu'
+import LazyImage from '../elements/LazyImage';
 // import detect from '../../utils/detect'
 class Header extends React.Component {
     constructor(props) {
@@ -43,7 +44,7 @@ class Header extends React.Component {
         return(
                 <header>
                     <nav className="navbar navbar-dark bg-primary">
-                        <CLink className="navbar-brand" default={true} href="/"> <img src="/images/logo.png" /></CLink>
+                        <CLink className="navbar-brand" default={true} href="/"> <LazyImage src="/images/logo.png" /></CLink>
                         <button onClick={() => this.handleNavigationClick()} className="navbar-toggler" type="button">
                             <span className="navbar-toggler-icon"></span>
                         </button>

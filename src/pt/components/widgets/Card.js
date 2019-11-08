@@ -1,5 +1,5 @@
 import React , {Fragment} from 'react';
-import LazyLoad from '../elements/LazyLoad'
+import LazyImage from '../elements/LazyImage';
 import CLink from '../elements/CLink'
 
 const defaultProps = {
@@ -19,7 +19,7 @@ export default class Card extends React.Component{
                     <div class="col-md-6">
                         <div class="project-box">
                             <div class="inner-img">
-                                <LazyLoad src={items.coverImage} alt={items.title} />
+                                <LazyImage src={items.coverImage} alt={items.title} />
                             </div>
                             <CLink href={items.url} default={true}><h5>{items.short_description}</h5></CLink>
                             {items.price && <span class="price-box"><i class="fa fa-inr" aria-hidden="true"></i> {items.price}</span>}
