@@ -6,7 +6,7 @@
   "repository": "git@github.com:lmammino/judo-heroes.git",
   "scripts": {
     "start:local": "cross-env NODE_ENV=production configs=local node_modules/.bin/babel-node --presets react,es2015 src/server.js",
-    "start-dev": "npm run start-dev-hmr",
+    "start-dev": "cross-env configs=local npm run start-dev-hmr",
     "start-dev-single-page": "node_modules/.bin/http-server src/static",
     "start-dev-hmr": "node_modules/.bin/webpack-dev-server --progress --colors --hot --config ./webpack.config.js --inline",
     "build:local": "cross-env NODE_ENV=production configs=local node_modules/.bin/webpack -p",

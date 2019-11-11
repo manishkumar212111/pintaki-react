@@ -10,6 +10,14 @@ export default {
     BlogListing : {
         url : 'api/v1/blog/list?',
         options: {}    
+    },
+    BlogDetail : {
+        url : 'api/v1/blog/detail?',
+        options: {}    
+    },
+    ProjectDetail : {
+        url : 'api/v1/project/detail?',
+        options: {}    
     }
 
 }

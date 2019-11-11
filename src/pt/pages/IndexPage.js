@@ -67,7 +67,6 @@ export default class IndexPage extends React.Component {
 		this.fetchData = this.fetchData.bind(this);
 	}
 	componentDidMount(){
-		console.log(this.context)
 		if(window.__INITIAL_STATE__ == null)
 			this.fetchData(this.props);
 		else

@@ -55,10 +55,13 @@ app.get('*', (req, res) => {
       if(typeof renderProps.components[1].fetchData !== 'undefined'){
           renderProps.components[1].fetchData(renderProps , (data) => {
             let configs = data; 
-            
+            let markup;
+          
+          if(configs.status === 302 && configs.url){
+            return res.redirect(302, configs.url);
+          }  
           // generate the React markup for the current route
-          let markup;
-          if(configs.error){
+          else if(configs.error){
               return res.redirect(302, configs.baseUrl+'503');
           }
           else if (renderProps) {

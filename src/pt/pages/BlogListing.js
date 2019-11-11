@@ -59,7 +59,6 @@ export default class BlogListing extends React.Component {
         }
         API.getApi('BlogListing' , options , false).then((res) =>{
 			if(res.status === 200 && res.data){
-                console.log("in Server side call");
 				cb(getData(res));
 			}
 			else {

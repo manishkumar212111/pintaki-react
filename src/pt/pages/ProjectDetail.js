@@ -9,36 +9,39 @@ import Pagination from '../components/elements/Pagination'
 const defaultProps = {
 	shimmer : true,
 	seo  : {title : "Project Listing" , pageDescription : "This is page Description"},
-	projects : {},
-    chunkJs : 'ProjectListing',
+	description : "",
+    chunkJs : 'ProjectDetail',
     pagination :{}
 }
 
 var getData = (res) => {
 	let o = {
 		seo : res.data.seo ? res.data.seo : defaultProps.seo,
-		projects : res.data.projects ? res.data.projects : defaultProps.projects,
-        chunkJs : 'ProjectListing',
-        pagination : res.data.pagination ? res.data.pagination : defaultProps.pagination,
+		project : res.data.description ? res.data.description : defaultProps.description,
+        chunkJs : 'ProjectDetail',
         shimmer:false
     };
-    o.link = '/projects/list'
-    o.queryParam = '/'
-	return o;
+    return o;
 }
 
 var getAPIResponse = (props ,cb) => {
     let options= {};
     if(props.location && props.location.pathname){
-        options.page = props.location.pathname.split('/')[3];
+        options.id = props.location.pathname.split('/')[3];
     }
 
-	API.getApi('ProjectListing' , options , false).then((res) =>{
-		if(res.status === 200 && res.data){
+	API.getApi('ProjectDetail' , options , false).then((res) =>{
+        if(res.status === 302 && res.redirect){
+            cb({
+                status : 302 ,
+                url : res.redirect
+            });
+        }
+        if(res.status === 200 && res.data){
 			cb(getData(res));
 		}
 		else{
-			console.log("API ERROR AT ProjectListingpage");
+			console.log("API ERROR AT ProjectDetailpage");
 			cb({error : true});
 		}
 	})
@@ -47,25 +50,26 @@ var getAPIResponse = (props ,cb) => {
 const contextTypes = {
     data: PropTypes.object
 };
-export default class ProjectListing extends React.Component {
+export default class ProjectDetail extends React.Component {
     static fetchData(props, cb) {
-        // getApiResponse(props, function(res) {
-        //     cb(res);  
-		// });
-		// cb({title: "testing"})
         let options= {};
         if(props.location && props.location.pathname){
-            options.page = props.location.pathname.split('/')[3];
+            options.id = props.location.pathname.split('/')[3];
         }
-        API.getApi('ProjectListing' , options , false).then((res) =>{
-			if(res.status === 200 && res.data){
-                console.log("in Server side call");
-				cb(getData(res));
-			}
-			else {
-				console.log("API ERROR AT HOMEPAGE");
-				cb({error : true});
-			}
+        API.getApi('ProjectDetail' , options , false).then((res) =>{
+            if(res.status === 302 && res.redirect){
+                cb({
+                    status : 302 ,
+                    url : res.redirect
+                });
+            }
+            if(res.status === 200 && res.data){
+                cb(getData(res));
+            }
+            else{
+                console.log("API ERROR AT ProjectListingpage");
+                cb({error : true});
+            }
 		})
 	}
     
@@ -97,24 +101,17 @@ export default class ProjectListing extends React.Component {
         if(this.state.shimmer){
 			return(<Simmer />)
 		}
-        const getContentList = (items) =>{
-			let h = [];
-			items && items.map((item) => {
-				h.push(<Card 
-					items = {item}
-				/>)
-			})
-			return h;
-        }
+        
         return(
             <div>
-                <h2>Our Projects</h2>
-                {getContentList(this.state.projects)}
-                <Pagination items = {this.state.pagination  } link = {this.state.link} queryParam = {this.state.queryParam} />
+                <h2>{this.state.project.title}</h2>
+                {React.createElement('div', {
+                    dangerouslySetInnerHTML: { __html: `${this.state.project.long_description}` }
+                })}
             </div>
         )
     }
 }  
 
-ProjectListing.contextTypes = contextTypes;
-ProjectListing.defaultProps = defaultProps;
+ProjectDetail.contextTypes = contextTypes;
+ProjectDetail.defaultProps = defaultProps;
