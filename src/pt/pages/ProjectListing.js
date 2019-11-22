@@ -107,10 +107,14 @@ export default class ProjectListing extends React.Component {
 			return h;
         }
         return(
-            <div>
-                <h2>Our Projects</h2>
-                {getContentList(this.state.projects)}
-                <Pagination items = {this.state.pagination  } link = {this.state.link} queryParam = {this.state.queryParam} />
+            <div className="content-box">
+				<div class="header-inner">
+					<h4>Our Projects </h4>
+				</div>
+				<div className="row">        
+                	{getContentList(this.state.projects)}
+                </div>
+				<Pagination items = {this.state.pagination  } link = {this.state.link} queryParam = {this.state.queryParam} />
             </div>
         )
     }

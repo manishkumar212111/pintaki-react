@@ -8,7 +8,7 @@ import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
 import routes from './routes/routes';
 import NotFoundPage from './pt/pages/NotFoundPage';
-import configs from './pt/configs/configs';
+import config from './pt/configs/configs';
 import PropTypes from 'prop-types';
 
 // initialize the server and configure support for ejs templates
@@ -54,17 +54,16 @@ app.get('*', (req, res) => {
       }
       if(typeof renderProps.components[1].fetchData !== 'undefined'){
           renderProps.components[1].fetchData(renderProps , (data) => {
-            let configs = data; 
-            let markup;
-          
-          if(configs.status === 302 && configs.url){
+          let configs = data; 
+          let markup;
+          if(configs.status && configs.status === 302 && configs.url){
             return res.redirect(302, configs.url);
           }  
           // generate the React markup for the current route
           else if(configs.error){
-              return res.redirect(302, configs.baseUrl+'503');
+              return res.redirect(302, config.baseUrl+'503');
           }
-          else if (renderProps) {
+          else if (renderProps && !configs.error) {
             renderProps.data = configs;
             // if the current route matched we have renderProps
             markup = renderToString(<DataProvider  {...renderProps} data={configs} />);

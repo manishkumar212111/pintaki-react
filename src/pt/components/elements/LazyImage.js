@@ -16,12 +16,18 @@ function LazyImage(props){
     }
     if(props.lazy){
         return(
-            <LazyLoad class="test" key={props.alt+Math.random(0,8)} placeholder={<Loader />} once>
+            <LazyLoad key={props.alt+Math.random(0,8)} placeholder={<Loader />} once>
                 <img {...props}></img>
             </LazyLoad>
         )
     }else{
-        <img {...props}></img>
+        let temp = props;
+        delete temp.height;
+        delete temp.loaderClass;
+        delete temp.lazy
+        return(
+            <img {...temp}></img>
+        )
     }    
 }
 

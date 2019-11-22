@@ -3,7 +3,7 @@
 import React from 'react';
 // import { Link } from 'react-router';
 const defaultProps = {
-	seo  : {title : "Project Listing" , pageDescription : "This is page Description"},
+	seo  : {title : "Not found page" , pageDescription : "Page not found"},
 }
 
 export default class NotFoundPage extends React.Component {

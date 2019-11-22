@@ -5,8 +5,13 @@ const routesConfigs = [
     { name: "Home", path: "/", component: "IndexPage" },
     { name: "ProjectListing" , path:"/projects/list(/:page)" , component : "ProjectListing"},
     { name: "BlogListing" , path:"/blogs/list(/:page)" , component : "BlogListing"},    
-    {name: "BlogDetail" , path : "/blog(/:slug)(/:id)" , component : "BlogDetail"},
-    {name: "ProjectDetail" , path : "/project(/:slug)(/:id)" , component : "ProjectDetail"},
+    { name: "BlogDetail" , path : "/blog(/:slug)(/:id)" , component : "BlogDetail"},
+    { name: "ProjectDetail" , path : "/project(/:slug)(/:id)" , component : "ProjectDetail"},
+
+    { name: "Info" , path:"/info" , component : "Info"},
+    { name: "Profile" , path:"/profile" , component : "Profile"},    
+    { name: "wishlist" , path:"/wishlist" , component : "WishList"},    
+
 
     { name: "503 error" , path:"/503" , component: "ErrorPage"},
     { name:"" , path: "*" , component : "NotFoundPage"}
@@ -32,14 +37,29 @@ const asyncLoad = function (component , callback) {
             }, 'BlogListing');
         
         case 'BlogDetail':    
-        return require.ensure([], require => {
-            callback(null, require('../pt/pages/BlogDetail').default)
-        }, 'BlogDetail');
+            return require.ensure([], require => {
+                callback(null, require('../pt/pages/BlogDetail').default)
+            }, 'BlogDetail');
 
         case 'ProjectDetail':    
-        return require.ensure([], require => {
-            callback(null, require('../pt/pages/ProjectDetail').default)
-        }, 'ProjectDetail');
+            return require.ensure([], require => {
+                callback(null, require('../pt/pages/ProjectDetail').default)
+            }, 'ProjectDetail');
+
+        case 'Info':    
+            return require.ensure([], require => {
+                callback(null, require('../pt/pages/home/info').default)
+            }, 'info');
+
+        case 'Profile':    
+            return require.ensure([], require => {
+                callback(null, require('../pt/pages/home/profile').default)
+            }, 'profile');
+
+        case 'WishList':    
+            return require.ensure([], require => {
+                callback(null, require('../pt/pages/home/wishlist').default)
+            }, 'wishlist');
 
         case 'ErrorPage':    
             return require.ensure([], require => {

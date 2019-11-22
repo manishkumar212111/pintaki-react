@@ -3,7 +3,7 @@ import CLink from '../elements/CLink';
 import {menuMobile ,menuDesktop} from '../../../data/menu'
 import LazyImage from '../elements/LazyImage';
 // import detect from '../../utils/detect'
-class Header extends React.Component {
+export class MobiHeader extends React.Component {
     constructor(props) {
         super(props);
         this.state = { expandMenu : false}
@@ -26,21 +26,21 @@ class Header extends React.Component {
             })}
             return h;
         }
-        const getItemList = (items) => {
-            let h = [];
-            {items && items.map((item) => {
-                h.push(<li>
-                    <div className="inner-cricle">
-                        <CLink href={item.link} default={true}>
-                            <img src={item.imagePath} />
-                            <h5>{item.title}</h5>
-                        </CLink>
-                    </div>
+        // const getItemList = (items) => {
+        //     let h = [];
+        //     {items && items.map((item) => {
+        //         h.push(<li>
+        //             <div className="inner-cricle">
+        //                 <CLink href={item.link} default={true}>
+        //                     <img src={item.imagePath} />
+        //                     <h5>{item.title}</h5>
+        //                 </CLink>
+        //             </div>
 
-                </li>)
-            })}
-            return h;
-        }
+        //         </li>)
+        //     })}
+        //     return h;
+        // }
         return(
                 <header>
                     <nav className="navbar navbar-dark bg-primary">
@@ -71,4 +71,50 @@ class Header extends React.Component {
         );}
 }
 
-export default Header;
+export class DesktopHeader extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { expandMenu : false}
+    }
+    
+    render(){ 
+        const desktopMenus = (items) =>{
+            let h = [];
+            {items && items.map((item) => {
+                h.push(<li className="nav-item">
+                    <CLink className={item.class} default={item.default} href={item.link}>{item.title}</CLink>
+                </li>)
+            })}
+            return h;
+        }
+        
+        return(
+
+            <header>
+                <div className="container">
+
+
+                    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+                        <CLink className="navbar-brand" href="/" default={true}> <img src="images/logo.png" /></CLink>
+                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                            <span className="navbar-toggler-icon"></span>
+                        </button>
+
+
+                        <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
+                            <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
+                                {desktopMenus(menuDesktop)}
+                            </ul>
+
+                        </div>
+                        <div className="searchbar">
+                            <input type="text" className="form-control" placeholder="Search" />
+                            <i className="fa fa-search" aria-hidden="true"></i>
+
+                        </div>
+                    </nav>
+                </div>
+            </header>
+
+        );}
+}

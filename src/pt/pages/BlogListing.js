@@ -106,10 +106,14 @@ export default class BlogListing extends React.Component {
 			return h;
         }
         return(
-            <div>
-                <h2>Our blogs</h2>
-                {getContentList(this.state.blogs)}
-                <Pagination items = {this.state.pagination  } link = {this.state.link} queryParam = {this.state.queryParam} />
+            <div className="content-box">
+                <div class="header-inner">
+					<h4>Our blogs </h4>
+				</div>
+				<div className="row">
+                	{getContentList(this.state.blogs)}
+                </div>
+				<Pagination items = {this.state.pagination  } link = {this.state.link} queryParam = {this.state.queryParam} />
             </div>
         )
     }

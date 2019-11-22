@@ -8,6 +8,7 @@ import API from '../utils/Api';
 import CLink from '../components/elements/CLink';
 import Simmer from '../components/elements/Simmer';
 import PropTypes from 'prop-types';
+import detect from '../utils/detect'
 
 const defaultProps = {
 	activeIndex : 0,
@@ -31,12 +32,18 @@ var getData = (res) => {
 
 var getAPIResponse = (props ,cb) => {
 	API.getApi('HomeAPI' , {} , false).then((res) =>{
-		if(res.status === 200 && res.data){
-			cb(getData(res));
-		}
-		else{
+		try{
+			if(res.status == 200 && res.data){
+
+				cb(getData(res));
+			}
+			else{
+				console.log("API ERROR AT HOMEPAGE");
+				cb({error : true, errorResp : "Invalid Response" });
+			}
+		} catch(e) {
 			console.log("API ERROR AT HOMEPAGE");
-			cb({error : true, errorResp : "Invalid Response" });
+			cb({ error : true, errorResp : "Exception" });
 		}
 	})
 }
@@ -45,17 +52,21 @@ const contextTypes = {
 };
 export default class IndexPage extends React.Component {	
 	static fetchData(props, cb) {
-        // getApiResponse(props, function(res) {
-        //     cb(res);  
-		// });
-		// cb({title: "testing"})
-		API.getApi('HomeAPI' , {} , false).then((res) =>{
-			if(res.status === 200 && res.data){
-				cb(getData(res));
-			}
-			else {
-				console.log("API ERROR AT HOMEPAGE");
+        API.getApi('HomeAPI' , {} , false).then((res) =>{
+			try{
+				if(res.status === 200 && res.data){
+					cb(getData(res));
+				}
+			 
+				else {
+					console.log("API ERROR AT HOMEPAGE" ,res);
+					cb({error : true});
+				}
+			} catch (e){
+
+				console.log("API ERROR AT HOMEPAGE", res.data ,e);
 				cb({error : true});
+		
 			}
 		})
 	}
@@ -103,40 +114,33 @@ export default class IndexPage extends React.Component {
 		}
 		const homeContainer = () =>{
 			return(
-				<div class="tab-content" id="pills-tabContent">
-					<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-						<section class="content-box">
-							<div class="header-inner">
-								<h4>New Projects <CLink default= {true} href="/projects/list" className="theme-btn">View All</CLink></h4>
-							</div>
-							{getContentList({items : this.state.projects})}
-							<div class="header-inner">
+				<section className="content-box">
+						<div class="header-inner">
+							<h4>New Projects <CLink default= {true} href="/projects/list" className="theme-btn">View All</CLink></h4>
+						</div>
+						<div className="row">
+								{getContentList({items : this.state.projects})}
+						</div>
+						
+						<div>
+							<div className ="header-inner">
 								<h4>Blogs <CLink default= {true} href="/blogs/list" className="theme-btn">View All</CLink></h4>
 							</div>
-							{getContentList({items : this.state.blogs})}
-
-						</section>
-					</div>
-				</div>
+							<div className = "row">
+									{getContentList({items : this.state.blogs})}
+								
+							</div>
+						</div>
+							{/* </section> */}
+						{/* </div> */}
+				</section>
 			);
 		}		
 
-		const container = (index , type) => {
-			switch(type){
-				case 'home':
-					return(homeContainer())
-				case 'info':
-					return(<div>this is info</div>)
-				case 'wishlist':
-					return(<div>this is wishlist</div>)
-				case 'profile':
-					return(<div>this is profile</div>)
-			}
-		}
 		return(
 			<div class="main">
-				{container(this.state.activeIndex , FooterMenuMobile[this.state.activeIndex].pageName)}
-				<Tabin items={FooterMenuMobile } index ={this.state.activeIndex} handleTabinClick = {this.handleTabinClick}/>	
+				{homeContainer()}
+				{/* {detect.isMobile() && <Tabin items={FooterMenuMobile } index ={this.state.activeIndex} handleTabinClick = {this.handleTabinClick}/>}	 */}
 			</div>
 			
 		);

@@ -2,6 +2,9 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 import { Link, browserHistory } from 'react-router';
 
+const defaultProps = {
+    default : true
+}
 function CLink(props){
     if(props.default){
         return(
@@ -19,4 +22,5 @@ function CLink(props){
     }
     
 }
+CLink.defaultProps = defaultProps;
 export default CLink;

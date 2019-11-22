@@ -41,14 +41,12 @@ export default class Pagination extends React.Component {
 		let pages = generatePages();
 		let link = this.props.link;
         return(
-            <div className="pagination">
+            <div className="container">
             {(props.items.pageCount < 2) ?
 					(props.items.pageCount == 1) ? <p className="gsc_col-xs-12">No More Page</p> : ""
 					:
-					<div className="gsc_col-md-12">
-						<div className="pagination">
-							<ul className="clearfix">
-								<li className={parseInt(currentPage) > 1 ? "" : "disable"}>
+						<ul className="pagination">
+							<li className={parseInt(currentPage) > 1 ? "" : "disable"}>
 									{currentPage - 1 >= 1 ? <CLink default={false} href={`${link}${queryParam}${parseInt(currentPage) - 1}`} default={false} title={"Previous Page"} >{"prev"}</CLink>
 										: ""
 									}
@@ -66,8 +64,6 @@ export default class Pagination extends React.Component {
 									}
 								</li>
 							</ul>
-						</div>
-					</div>
 				}
             </div>
         )
