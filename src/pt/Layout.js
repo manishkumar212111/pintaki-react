@@ -1,8 +1,8 @@
 'use strict';
 
 import React from 'react';
-import {MobiHeader , DesktopHeader} from './components/widgets/Header';
-import  {Footer ,MobiFooter} from './components/widgets/Footer';
+import MobiHeader ,{ DesktopHeader} from './components/widgets/Header';
+import  Footer ,{ MobiFooter} from './components/widgets/Footer';
 import detect from './utils/detect'
 export default class Layout extends React.Component {
   render() {

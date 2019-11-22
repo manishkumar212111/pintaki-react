@@ -3,7 +3,7 @@ import CLink from '../elements/CLink';
 import {menuMobile ,menuDesktop} from '../../../data/menu'
 import LazyImage from '../elements/LazyImage';
 // import detect from '../../utils/detect'
-export class MobiHeader extends React.Component {
+export default class MobiHeader extends React.Component {
     constructor(props) {
         super(props);
         this.state = { expandMenu : false}

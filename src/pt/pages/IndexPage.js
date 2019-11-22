@@ -33,9 +33,8 @@ var getData = (res) => {
 var getAPIResponse = (props ,cb) => {
 	API.getApi('HomeAPI' , {} , false).then((res) =>{
 		try{
-			if(res.status == 200 && res.data){
-
-				cb(getData(res));
+			if(res.status === 200 && res.data){
+			cb(getData(res));
 			}
 			else{
 				console.log("API ERROR AT HOMEPAGE");
@@ -43,7 +42,7 @@ var getAPIResponse = (props ,cb) => {
 			}
 		} catch(e) {
 			console.log("API ERROR AT HOMEPAGE");
-			cb({ error : true, errorResp : "Exception" });
+			cb({error : true, errorResp : "Exception" });
 		}
 	})
 }
@@ -52,19 +51,22 @@ const contextTypes = {
 };
 export default class IndexPage extends React.Component {	
 	static fetchData(props, cb) {
-        API.getApi('HomeAPI' , {} , false).then((res) =>{
+        // getApiResponse(props, function(res) {
+        //     cb(res);  
+		// });
+		// cb({title: "testing"})
+		API.getApi('HomeAPI' , {} , false).then((res) =>{
 			try{
 				if(res.status === 200 && res.data){
 					cb(getData(res));
 				}
 			 
 				else {
-					console.log("API ERROR AT HOMEPAGE" ,res);
+					console.log("API ERROR AT HOMEPAGE");
 					cb({error : true});
 				}
 			} catch (e){
-
-				console.log("API ERROR AT HOMEPAGE", res.data ,e);
+				console.log("API ERROR AT HOMEPAGE");
 				cb({error : true});
 		
 			}
