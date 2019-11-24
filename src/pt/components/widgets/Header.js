@@ -56,11 +56,11 @@ export default class MobiHeader extends React.Component {
             
                         </div>}
                     </nav>
-                    <div className="searchbar">
+                    {/* <div className="searchbar">
                         <input type="text" className="form-control" placeholder="Search" />
                         <i className="fa fa-search" aria-hidden="true"></i>
             
-                    </div>
+                    </div> */}
                 {/* <div className="inner-box">
                     <ul>
                         {getItemList(menuMobile)}  

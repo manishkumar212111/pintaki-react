@@ -65,6 +65,7 @@ export default class Pagination extends React.Component {
 								</li>
 							</ul>
 				}
+			
             </div>
         )
     }
