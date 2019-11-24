@@ -19,7 +19,8 @@ export default class Card extends React.Component{
                     <div class="col-md-6">
                         <div class="project-box">
                         <CLink href={items.url} default={true}>
-                            <div class="inner-img">
+                            <div class="inner-img setimagewidth">
+                              
                                 <LazyImage src={items.coverImage} alt={items.title} height={props.imgHeight}/>
                             </div>
                             <h5>{items.short_description}</h5></CLink>

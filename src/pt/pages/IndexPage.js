@@ -121,7 +121,7 @@ export default class IndexPage extends React.Component {
 							<h4>New Projects <CLink default= {true} href="/projects/list" className="theme-btn">View All</CLink></h4>
 						</div>
 						<div className="row">
-								{getContentList({items : this.state.projects})}
+							<div className="inonerow">	{getContentList({items : this.state.projects})} </div>
 						</div>
 						
 						<div>
@@ -129,7 +129,7 @@ export default class IndexPage extends React.Component {
 								<h4>Blogs <CLink default= {true} href="/blogs/list" className="theme-btn">View All</CLink></h4>
 							</div>
 							<div className = "row">
-									{getContentList({items : this.state.blogs})}
+								<div className="inonerow">{getContentList({items : this.state.blogs})} </div>
 								
 							</div>
 						</div>

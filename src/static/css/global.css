@@ -51,3 +51,36 @@
     }
   }
   
+
+  /* index page css */
+  .inonerow{
+    display: flex;
+    flex-flow: row;
+    overflow: scroll;;   
+   }
+   .setimagewidth{
+    width:240px
+   }
+   ul.pagination{
+     margin-top: 20px;
+     justify-content: center;
+     align-items: center;
+     padding: 15px;
+     box-shadow: 0px 0px 10px #7a7b7b45;
+   }
+   .pagination>li.active>a {
+    border-radius: 50% !important;margin: 0 5px; background-color: #17bcde; padding: 8px 11px;color:white;
+   }
+   .pagination>li>a {
+      border-radius: 50% !important;margin: 0 5px;
+     }
+
+     ::-webkit-scrollbar {
+      width: 0px; 
+      background: transparent; 
+      }
+      
+      ::-webkit-scrollbar-thumb {
+      background: transparent;
+      width: 0px;
+      }
