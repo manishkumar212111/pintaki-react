@@ -1,3 +1,7 @@
+a {
+  text-decoration: none !important;  
+}
+
 .loader {
     margin: 5% 41%;
     border: 5px solid #f3f3f3;

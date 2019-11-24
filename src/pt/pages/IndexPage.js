@@ -110,6 +110,7 @@ export default class IndexPage extends React.Component {
 			items.items && items.items.map((item) => {
 				h.push(<Card 
 					items = {item}
+					innerClass = "setimagewidth"
 				/>)
 			})
 			return h;

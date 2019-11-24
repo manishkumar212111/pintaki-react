@@ -6,7 +6,8 @@ const defaultProps = {
     viewALlTitle : "View All",
     description : "This is test desc",
     headerTitle : "New projects",
-    imgHeight : 'auto'
+    imgHeight : 'auto',
+    innerClass : "",
 }
 export default class Card extends React.Component{
     constructor(props){
@@ -19,7 +20,7 @@ export default class Card extends React.Component{
                     <div class="col-md-6">
                         <div class="project-box">
                         <CLink href={items.url} default={true}>
-                            <div class="inner-img setimagewidth">
+                            <div class={`inner-img ${props.innerClass}`}>
                               
                                 <LazyImage src={items.coverImage} alt={items.title} height={props.imgHeight}/>
                             </div>
