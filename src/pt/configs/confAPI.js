@@ -18,6 +18,10 @@ export default {
     ProjectDetail : {
         url : 'api/v1/project/detail?',
         options: {}    
+    },
+    LeadPostAPI : {
+        url : 'api/v1/leads?',
+        options: {}    
     }
 
 }
