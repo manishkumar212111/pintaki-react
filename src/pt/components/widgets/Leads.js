@@ -75,7 +75,7 @@ export default class Leads extends React.Component {
 
     }
     closeCallBack() {
-        if(this.props.closeCallBack){
+        if( typeof this.props.closeCallBack == 'function'){
             this.props.closeCallBack(false);
         }
     }

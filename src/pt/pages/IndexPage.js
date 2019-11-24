@@ -118,7 +118,7 @@ export default class IndexPage extends React.Component {
 		const homeContainer = () =>{
 			return(
 				<section className="content-box">
-
+						
 						<div class="header-inner">
 							<h4>New Projects <CLink default= {true} href="/projects/list" className="theme-btn">View All</CLink></h4>
 						</div>
