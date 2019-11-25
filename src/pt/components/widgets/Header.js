@@ -2,15 +2,30 @@ import React, {Fragment}  from 'react';
 import CLink from '../elements/CLink';
 import {menuMobile ,menuDesktop} from '../../../data/menu'
 import LazyImage from '../elements/LazyImage';
-// import detect from '../../utils/detect'
+// import detect from '../../utils/detect';
+import Leads from '../../components/widgets/Leads';
 export default class MobiHeader extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { expandMenu : false}
+        this.state = { expandMenu : false , openForm : false}
         this.handleNavigationClick = this.handleNavigationClick.bind(this)
+        this.handleFormOpen = this.handleFormOpen.bind(this);
+        this.closeCallBack = this.closeCallBack.bind(this);
     }
-    
+    handleFormOpen() {
+        this.setState({
+            openForm : true
+        })        
+    }
+
+    closeCallBack(){
+        this.setState({
+            openForm : false
+        })
+    }
+
     handleNavigationClick(){
+        
         this.setState({
             expandMenu : !this.state.expandMenu
         });
@@ -26,29 +41,17 @@ export default class MobiHeader extends React.Component {
             })}
             return h;
         }
-        // const getItemList = (items) => {
-        //     let h = [];
-        //     {items && items.map((item) => {
-        //         h.push(<li>
-        //             <div className="inner-cricle">
-        //                 <CLink href={item.link} default={true}>
-        //                     <img src={item.imagePath} />
-        //                     <h5>{item.title}</h5>
-        //                 </CLink>
-        //             </div>
-
-        //         </li>)
-        //     })}
-        //     return h;
-        // }
+        
         return(
                 <header>
                     <nav className="navbar navbar-dark bg-primary">
-                        <CLink className="navbar-brand" default={true} href="/"> <LazyImage src="/images/logo.png" /></CLink>
-                        <button onClick={() => this.handleNavigationClick()} className="navbar-toggler" type="button">
-                            <span className="navbar-toggler-icon"></span>
+                        <button onClick={() => this.handleFormOpen()} className="navbar-toggler" type="button">
+                            {<i className="fa fa-paper-plane-o"></i>
+                                /* <span className="navbar-toggler-icon"></span> */}
                         </button>
             
+                        <CLink className="navbar-brand" default={true} href="/"> <LazyImage src="/images/logo.png" /></CLink>
+                        
                         {this.state.expandMenu && <div className=" navbar-collapse">
                             <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
                                 {mobileMenus(menuMobile)}
@@ -56,16 +59,7 @@ export default class MobiHeader extends React.Component {
             
                         </div>}
                     </nav>
-                    {/* <div className="searchbar">
-                        <input type="text" className="form-control" placeholder="Search" />
-                        <i className="fa fa-search" aria-hidden="true"></i>
-            
-                    </div> */}
-                {/* <div className="inner-box">
-                    <ul>
-                        {getItemList(menuMobile)}  
-                    </ul>
-                </div> */}
+                    {this.state.openForm && <Leads openForm={true} closeCallBack={this.closeCallBack} />}
             </header>
 
         );}
