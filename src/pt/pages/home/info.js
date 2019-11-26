@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {menuMobile} from '../../../data/menu'
+import {menuMobile} from '../../../data/menu';
 import CLink from '../../components/elements/CLink';
 
 const defaultProps = {
@@ -41,7 +41,7 @@ export default class Info extends React.Component {
             <div class="container">
             {/* <h3>Vertical Pills</h3> */}
             <ul class="info">
-                hiiii
+               
                 {getContent()}   
             </ul>
           </div>
