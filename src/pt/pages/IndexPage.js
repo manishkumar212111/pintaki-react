@@ -8,7 +8,7 @@ import API from '../utils/Api';
 import CLink from '../components/elements/CLink';
 import Simmer from '../components/elements/Simmer';
 import PropTypes from 'prop-types';
-import detect from '../utils/detect'
+import CardList from '../components/widgets/CardList';
 
 const defaultProps = {
 	activeIndex : 0,
@@ -118,14 +118,18 @@ export default class IndexPage extends React.Component {
 		const homeContainer = () =>{
 			return(
 				<section className="content-box">
-						<div class="header-inner">
-							<h4>New Projects <CLink default= {true} href="/projects/list" className="theme-btn">View All</CLink></h4>
-						</div>
-						<div className="row">
-							<div className="inonerow">	{getContentList({items : this.state.projects})} </div>
-						</div>
+						<CardList 
+							items={this.state.projects} 
+							title= "Our Projects"
+							viewAllLink = "/projects/list"
+						/>
+						<CardList 
+							items={this.state.blogs}
+							title= "Our Blogs"
+							viewAllLink = "/blogs/list"
+						/>
 						
-						<div>
+						{/* <div>
 							<div className ="header-inner">
 								<h4>Blogs <CLink default= {true} href="/blogs/list" className="theme-btn">View All</CLink></h4>
 							</div>
@@ -133,7 +137,7 @@ export default class IndexPage extends React.Component {
 								<div className="inonerow">{getContentList({items : this.state.blogs})} </div>
 								
 							</div>
-						</div>
+						</div> */}
 							{/* </section> */}
 						{/* </div> */}
 				</section>
