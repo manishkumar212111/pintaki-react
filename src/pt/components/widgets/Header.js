@@ -19,6 +19,7 @@ export default class MobiHeader extends React.Component {
     }
 
     closeCallBack(){
+        console.log("in this");
         this.setState({
             openForm : false
         })

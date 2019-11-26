@@ -151,44 +151,46 @@ export default class Leads extends React.Component {
             </div>)
         }
         return (
-            <div>
-                <div onClick={() => this.closeCallBack()}>close</div>
-                <div className="">
-                    <div className="lebel">
-                        <lebel>Name :</lebel>
+            <div className="overlay">
+                <div className= "popup">
+                    <span onClick={() => this.closeCallBack()} class="close">&times;</span>
+                    <div className="content">
+                        <div className="lebel">
+                            <lebel>Name :</lebel>
+                        </div>
+                        <div>
+                            <input type="text" name="name" id="name" value={this.state.fields.name} placeholder="Enter Name" onChange={(e) => this.handleChange(e , 'name')}/>
+                            {!this.state.error['name'].status && <span class="error">{this.state.error['name'].message}</span>}
+                        </div>
                     </div>
-                    <div>
-                        <input type="text" name="name" id="name" value={this.state.fields.name} placeholder="Enter Name" onChange={(e) => this.handleChange(e , 'name')}/>
-                        {!this.state.error['name'].status && <span class="error">{this.state.error['name'].message}</span>}
-                    </div>
-                </div>
 
-                <div className="">
-                    <div className="lebel">
-                        <lebel>Mobile:</lebel>
+                    <div className="">
+                        <div className="lebel">
+                            <lebel>Mobile:</lebel>
+                        </div>
+                        <div>
+                            <input type="tel" name="mobile" id="mobile" placeholder="Mobile No" value={this.state.fields.mobile} onChange={(e) => this.handleChange(e , 'mobile')} />
+                            {!this.state.error['mobile'].status && <span class="error">{this.state.error['mobile'].message}</span>}                    
+                        </div>
                     </div>
-                    <div>
-                        <input type="tel" name="mobile" id="mobile" placeholder="Mobile No" value={this.state.fields.mobile} onChange={(e) => this.handleChange(e , 'mobile')} />
-                        {!this.state.error['mobile'].status && <span class="error">{this.state.error['mobile'].message}</span>}                    
-                    </div>
-                </div>
 
-                <div className="">
-                    <div className="lebel">
-                        <lebel>Interested in:</lebel>
+                    <div className="">
+                        <div className="lebel">
+                            <lebel>Interested in:</lebel>
+                        </div>
+                        <div>
+                            <select name="interested_in"  onChange={(e) => this.handleChange(e , 'interested_in')}>
+                                {getInterestedContent()}
+                            </select>
+                            <span class="error"></span>
+                        </div>
                     </div>
-                    <div>
-                        <select name="interested_in"  onChange={(e) => this.handleChange(e , 'interested_in')}>
-                            {getInterestedContent()}
-                        </select>
-                        <span class="error"></span>
+
+                    <div className="">
+                    <button class="button" onClick={() => this.finalSubmit()} disabled={this.state.showButton}>Submit</button>
                     </div>
-                </div>
 
-                <div className="">
-                <button class="button" onClick={() => this.finalSubmit()} disabled={this.state.showButton}>Submit</button>
                 </div>
-
             </div>
         )
     }
