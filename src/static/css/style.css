@@ -311,14 +311,23 @@ header .searchbar i {
 
 header .bg-primary {
     background-color: transparent !important;
-    padding: 0 20px;
+    padding: 0 0px 0px 0px;
 }
-
+.left_side {
+    padding: 23px;
+    font-size: 20px;
+    color: steelblue;
+}
+.right_side {
+    padding: 23px;
+    font-size: 20px;
+    color: green;
+}
 header .navbar-brand {
     display: table;
     padding-top: .3125rem;
     padding-bottom: .3125rem;
-    /* margin: 0 auto; */
+    margin: 0 auto;
     font-size: 1.25rem;
     line-height: inherit;
     white-space: nowrap;
@@ -404,4 +413,11 @@ ul.info {
 .about {
     padding: 0px;
     margin-top: 30px;
+}
+
+.content-box .inner-img img {
+    min-width: 100%;
+    max-height: 370px;
+    width: 100%;
+    border-radius: 15px 15px 0 0;
 }

@@ -17,8 +17,8 @@ export default class Card extends React.Component{
         const props = this.props;
         let items = props.items;
         return(<Fragment>
-                    <div class="col-md-6">
-                        <div class="project-box">
+                    <div class="col-md-3 p-0  ">
+                        <div class="m-2 project-box set_card_layout ">
                         <CLink href={items.url} default={true}>
                             <div class={`inner-img ${props.innerClass}`}>
                               

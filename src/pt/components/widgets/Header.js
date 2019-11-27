@@ -46,13 +46,12 @@ export default class MobiHeader extends React.Component {
         return(
                 <header>
                     <nav className="navbar navbar-dark bg-primary">
-                        <button onClick={() => this.handleFormOpen()} className="navbar-toggler" type="button">
-                            {<i className="fa fa-paper-plane-o"></i>
-                                /* <span className="navbar-toggler-icon"></span> */}
-                        </button>
+                        <span className="left_side" onClick={() => this.handleFormOpen()}>
+                            <i className="fa fa-paper-plane-o" ></i>
+                        </span>
             
                         <CLink className="navbar-brand" default={true} href="/"> <LazyImage src="/images/logo.png" /></CLink>
-                        
+                        <span className="right_side"><i class="fa fa-phone" aria-hidden="true"></i></span>
                         {this.state.expandMenu && <div className=" navbar-collapse">
                             <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
                                 {mobileMenus(menuMobile)}

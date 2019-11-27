@@ -62,9 +62,9 @@ a {
     flex-flow: row;
     overflow: scroll;;   
    }
-   .setimagewidth{
+   /* .setimagewidth{
     width:240px
-   }
+   } */
    ul.pagination{
      margin-top: 20px;
      justify-content: center;
@@ -184,5 +184,12 @@ a {
         font-size: 13px;
         margin: 2px;
     }
+
+    .set_card_layout {
+      padding: 0;
+      box-shadow: 0px 0px 10px #8080804f;
+      border-radius: 20px;
+      min-width: 240px;
+  }
 
       
