@@ -154,42 +154,44 @@ export default class Leads extends React.Component {
             <div className="overlay">
                 <div className= "popup">
                     <span onClick={() => this.closeCallBack()} class="close">&times;</span>
-                    <div className="content">
-                        <div className="lebel">
-                            <lebel>Name :</lebel>
+                    <div className="content">                    
+                        <h2>Let US Know Your Query</h2>
+                        <div className="form-group">
+                            {/* <div className="control-label col-sm-2">
+                                <lebel>Name :</lebel>
+                            </div> */}
+                            <div>
+                                {!this.state.error['name'].status && <span class="error">{this.state.error['name'].message}</span>}
+                                <input type="text" className="form-control" name="name" id="name" value={this.state.fields.name} placeholder="Enter Name" onChange={(e) => this.handleChange(e , 'name')}/>
+                            </div>
                         </div>
-                        <div>
-                            <input type="text" name="name" id="name" value={this.state.fields.name} placeholder="Enter Name" onChange={(e) => this.handleChange(e , 'name')}/>
-                            {!this.state.error['name'].status && <span class="error">{this.state.error['name'].message}</span>}
+
+                        <div className="form-group">
+                            {/* <div className="lebel">
+                                <lebel>Mobile:</lebel>
+                            </div> */}
+                            <div>
+                                {!this.state.error['mobile'].status && <span class="error">{this.state.error['mobile'].message}</span>}                    
+                                <input type="tel" className="form-control" name="mobile" id="mobile" placeholder="Mobile No" value={this.state.fields.mobile} onChange={(e) => this.handleChange(e , 'mobile')} />
+                            </div>
+                        </div>
+
+                        <div className="form-group">
+                            {/* <div className="lebel">
+                                <lebel>Interested in:</lebel>
+                            </div> */}
+                            <div>
+                                <select name="interested_in" className="form-control"  onChange={(e) => this.handleChange(e , 'interested_in')}>
+                                    {getInterestedContent()}
+                                </select>
+                                <span class="error"></span>
+                            </div>
+                        </div>
+
+                        <div className="">
+                            <button className="btn btn-danger form-control" onClick={() => this.finalSubmit()} disabled={this.state.showButton}>Submit</button>
                         </div>
                     </div>
-
-                    <div className="">
-                        <div className="lebel">
-                            <lebel>Mobile:</lebel>
-                        </div>
-                        <div>
-                            <input type="tel" name="mobile" id="mobile" placeholder="Mobile No" value={this.state.fields.mobile} onChange={(e) => this.handleChange(e , 'mobile')} />
-                            {!this.state.error['mobile'].status && <span class="error">{this.state.error['mobile'].message}</span>}                    
-                        </div>
-                    </div>
-
-                    <div className="">
-                        <div className="lebel">
-                            <lebel>Interested in:</lebel>
-                        </div>
-                        <div>
-                            <select name="interested_in"  onChange={(e) => this.handleChange(e , 'interested_in')}>
-                                {getInterestedContent()}
-                            </select>
-                            <span class="error"></span>
-                        </div>
-                    </div>
-
-                    <div className="">
-                    <button class="button" onClick={() => this.finalSubmit()} disabled={this.state.showButton}>Submit</button>
-                    </div>
-
                 </div>
             </div>
         )
