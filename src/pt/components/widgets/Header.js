@@ -19,7 +19,6 @@ export default class MobiHeader extends React.Component {
     }
 
     closeCallBack(){
-        console.log("in this");
         this.setState({
             openForm : false
         })
@@ -51,7 +50,7 @@ export default class MobiHeader extends React.Component {
                         </span>
             
                         <CLink className="navbar-brand" default={true} href="/"> <LazyImage src="/images/logo.png" /></CLink>
-                        <span className="right_side"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                        <span className="right_side"><a title="call" href="tel:+919672421830"><i class="fa fa-phone" aria-hidden="true"></i></a></span>
                         {this.state.expandMenu && <div className=" navbar-collapse">
                             <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
                                 {mobileMenus(menuMobile)}
@@ -108,6 +107,7 @@ export class DesktopHeader extends React.Component {
                         </div>
                     </nav>
                 </div>
+                
             </header>
 
         );}
