@@ -101,6 +101,7 @@ export default class IndexPage extends React.Component {
 	}
 
 	render(){
+console.log("Testinh");
 		if(this.state.shimmer){
 			return(<Simmer />)
 		}
