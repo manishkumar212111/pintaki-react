@@ -22,6 +22,10 @@ export default {
     LeadPostAPI : {
         url : 'api/v1/leads?',
         options: {}    
+    },
+    ContactAPI : {
+        url : 'api/v1/contacts?',
+        options: {}    
     }
-
+    
 }
