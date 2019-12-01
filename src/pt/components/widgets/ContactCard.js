@@ -1,7 +1,7 @@
 import React from "react";
 const cardList = [
     {icon : "fa fa-phone" , title:"Call-us" , description:<div >+91 1234567891<div className="font-weight-light">Mon to Sat 9:30 AM to 6 PM</div></div>},
-    {icon : "fa fa-envelope" , title:"E-Mail" , description:<div>abc@pintaki.com</div>},
+    {icon : "fa fa-envelope" , title:"email" , description:<div>abc@pintaki.com</div>},
     {icon : "fa fa-map-marker" , title:"Address" , description:<div>12/335,jagatpura,jaipur,rajasthan -123456</div>}
 ]
 const ContactCard = ()=>{

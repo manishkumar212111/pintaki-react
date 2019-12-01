@@ -20,7 +20,7 @@ export default class ContactForm extends React.Component {
                     <input type="email" className="form-control" id="email" placeholder="Enter Email"/>
                 </div>
                 <div>
-                    <textarea className="form-control" rows="5" id="comment"></textarea>
+                    <textarea className="form-control" rows="5" id="comment" placeholder="Enter Commment"></textarea>
                 </div>
                     <button type="button" className="btn btn-danger btn-block my-4">Submit</button>
             </div>
