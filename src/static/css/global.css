@@ -135,13 +135,15 @@ a {
       }
       
       .popup {
-        margin: 70px auto;
+        height: 500px;
+        margin: 10px 22px 10px 21px;
         padding: 20px;
         background: #fff;
         border-radius: 5px;
         width: 30%;
         position: relative;
-        transition: all 5s ease-in-out;
+        /* transition: all 5s ease-in-out; */
+        overflow-y: scroll;
       }
       
       .popup h2 {
@@ -177,7 +179,11 @@ a {
           width: 90%;
         }
       }
-
+      @media screen and (min-width:768px) and (max-width:1400px) {
+        .popup {
+          margin: 70px auto !important;
+        }
+      }
       span.error {
         color: red;  
         float: right;
