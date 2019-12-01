@@ -68,7 +68,7 @@ const asyncLoad = function (component , callback) {
 
             case 'Contact':    
             return require.ensure([], require => {
-                callback(null, require('../pt/pages/Contact').default)
+                callback(null, require('../pt/pages/Contact-Us').default)
             }, 'Contact');
         case 'ErrorPage':    
             return require.ensure([], require => {
