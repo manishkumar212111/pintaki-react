@@ -319,9 +319,18 @@ header .bg-primary {
     color: steelblue;
 }
 .right_side {
-    padding: 23px;
-    font-size: 20px;
-    color: green;
+    background: #6bad23;
+    height: 38px;
+    width: 38px;
+    -webkit-border-radius: 30px;
+    border-radius: 30px;
+    font-size: 29px;
+    color: white;
+    margin-right: 9px;
+}
+
+.right_side a {
+    color : white;
 }
 header .navbar-brand {
     display: table;

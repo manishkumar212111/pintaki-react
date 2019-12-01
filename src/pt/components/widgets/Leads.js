@@ -145,16 +145,12 @@ export default class Leads extends React.Component {
 
             return h;
         }
-        if(this.state.showThanksScreen){
-            return (<div>
-                Thanks for query , our team will contact you within 24 hours    
-            </div>)
-        }
+        
         return (
             <div className="overlay">
                 <div className= "popup">
                     <span onClick={() => this.closeCallBack()} class="close">&times;</span>
-                    <div className="content">                    
+                    {!this.state.showThanksScreen ? <div className="content">                    
                         <h2>Let US Know Your Query</h2>
                         <div className="form-group">
                             {/* <div className="control-label col-sm-2">
@@ -191,7 +187,11 @@ export default class Leads extends React.Component {
                         <div className="">
                             <button className="btn btn-danger form-control" onClick={() => this.finalSubmit()} disabled={this.state.showButton}>Submit</button>
                         </div>
-                    </div>
+                    </div> : 
+                    <div className="content">
+                        Thanks for query , our team will contact you within 24 hours    
+                    </div>  
+                    }
                 </div>
             </div>
         )
