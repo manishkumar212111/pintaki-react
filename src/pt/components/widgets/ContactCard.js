@@ -9,7 +9,7 @@ const ContactCard = ()=>{
   const simplecard = (icon , title , subtitle)=>{
     let card_view = [];
       cardList.map((val)=>card_view.push( 
-         <div class="card mx-auto my-3 " style={{width: "22rem"}}>
+         <div class="card mx-auto my-3 ">
            <div class="card-body">
                <div className="row">
                  <div className="col-2">
