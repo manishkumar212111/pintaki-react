@@ -192,4 +192,10 @@ a {
       min-width: 240px;
   }
 
+  .btn_disabled {
+    background-color: gray !important;
+    color : white;
+    border-color: white !important;
+  }
+
       

@@ -4,10 +4,12 @@ import detect from '../../utils/detect';
 import globals from '../../utils/globals';
 
 const interestedContent = [
-    { title: "contractor" , value : "contractor" },
-    { title: "civil" , value : "civil" },
-    { title: "plumber" , value:"plumber" },
-    { title: "others" , value:"others" },
+    { title: "Select Service Type" , value : "none" },    
+    { title: "Architect" , value : "Architect" },
+    { title: "Interior designer" , value : "Interior designer" },
+    { title: "Carpenter" , value:"Carpenter" },
+    { title: "Paint" , value:"Paint" },
+    { title: "False ceiling" , value:"False ceiling" },
 ]
 
 const regexps = {
@@ -43,7 +45,10 @@ export default class Leads extends React.Component {
             fields : {
                 name : '',
                 mobile : '',
-                interested_in : ''
+                interested_in : '',
+                area : '',
+                ref_PINID : '',
+                location : ''
             },
             error : {
                 name : {
@@ -57,7 +62,20 @@ export default class Leads extends React.Component {
                 interested_in : {
                     status : true,
                     message : ''
-                }
+                },
+                location : {
+                    status : true,
+                    message : 'please enter correct location'
+                },
+                area : {
+                    status : true,
+                    message : 'please enter correct area'
+                },
+                ref_PINID : {
+                    status : true,
+                    message : 'please enter correct ref_PINID'
+                },
+
             }
         }
         
@@ -68,8 +86,9 @@ export default class Leads extends React.Component {
             let fields = this.state.fields;
             fields.name = globals.getCookie('name');
             fields.mobile = globals.getCookie('mobile');
+            fields.location = globals.getCookie('location');
 
-            this.setState({fields : fields, showButton : !this.validateField()});
+            this.setState({fields : fields, showButton : this.validateField()});
 
        }
 
@@ -88,11 +107,15 @@ export default class Leads extends React.Component {
         
         this.setState({ fields : fields , error : validationStatus})
         let status = this.validateField();
-        this.setState({showButton : !status})
+        let showArea = this.state.showArea;
+        if(key == 'interested_in'){
+            showArea =true ;
+        }
+        this.setState({showButton : status , showArea : showArea })
     }
 
     validateField(){
-        let validationArray = ['name', 'mobile'];
+        let validationArray = ['name', 'mobile' , 'location'];
 		// let error = this.state.error;
 		let status = true;
 		for (let i in validationArray) {
@@ -107,30 +130,42 @@ export default class Leads extends React.Component {
                 return (regexps['alphawithspace'].test(value) && value.length > 2); 
             case 'mobile':
                 return (regexps['mobile'].test(value) && value.length == 10); 
+            case 'location':
+                return (value.length > 0); 
             case 'interested_in' : 
+                return true;
+            case 'area' :
+                return regexps['number'].test(value);
+            case 'ref_PINID' : 
                 return true;
         }
         return false;
     }
 
     finalSubmit(){
-        
+        if(!this.validateField()){
+            return;
+        }
         let options = {
             name : this.state.fields.name,
             mobile : this.state.fields.mobile,
             interested_in : this.state.fields.interested_in,
-            source : detect.isMobile() ? 'wap' : 'web'
+            source : detect.isMobile() ? 'wap' : 'web',
+            ref_PINID : this.state.fields.ref_PINID,
+            area : this.state.fields.area,
+            location : this.state.fields.location
         }
         let self = this;
         // set cookie
         globals.setCookie('name' , this.state.fields.name);
         globals.setCookie('mobile' , this.state.fields.mobile);
+        globals.setCookie('location' , this.state.fields.location);
 
         API.POSTAPI('LeadPostAPI' , options , false).then((res) => {
             if(res.status == 200){
                 self.setState({showThanksScreen : true});
             } else{
-                alert("Something went wrong");
+                alert("something went wrong");
             }        
         })
     }
@@ -153,39 +188,37 @@ export default class Leads extends React.Component {
                     {!this.state.showThanksScreen ? <div className="content">                    
                         <h2>Let US Know Your Query</h2>
                         <div className="form-group">
-                            {/* <div className="control-label col-sm-2">
-                                <lebel>Name :</lebel>
-                            </div> */}
-                            <div>
-                                {!this.state.error['name'].status && <span class="error">{this.state.error['name'].message}</span>}
-                                <input type="text" className="form-control" name="name" id="name" value={this.state.fields.name} placeholder="Enter Name" onChange={(e) => this.handleChange(e , 'name')}/>
-                            </div>
+                            {!this.state.error['name'].status && <span class="error">{this.state.error['name'].message}</span>}
+                            <input type="text" className="form-control" name="name" id="name" value={this.state.fields.name} placeholder="Enter Name" onChange={(e) => this.handleChange(e , 'name')}/>
                         </div>
 
                         <div className="form-group">
-                            {/* <div className="lebel">
-                                <lebel>Mobile:</lebel>
-                            </div> */}
-                            <div>
-                                {!this.state.error['mobile'].status && <span class="error">{this.state.error['mobile'].message}</span>}                    
-                                <input type="tel" className="form-control" name="mobile" id="mobile" placeholder="Mobile No" value={this.state.fields.mobile} onChange={(e) => this.handleChange(e , 'mobile')} />
-                            </div>
+                            {!this.state.error['mobile'].status && <span class="error">{this.state.error['mobile'].message}</span>}                    
+                            <input type="tel" className="form-control" name="mobile" id="mobile" placeholder="Mobile No" value={this.state.fields.mobile} onChange={(e) => this.handleChange(e , 'mobile')} />
                         </div>
 
                         <div className="form-group">
-                            {/* <div className="lebel">
-                                <lebel>Interested in:</lebel>
-                            </div> */}
-                            <div>
-                                <select name="interested_in" className="form-control"  onChange={(e) => this.handleChange(e , 'interested_in')}>
-                                    {getInterestedContent()}
-                                </select>
-                                <span class="error"></span>
-                            </div>
+                            <select name="interested_in" className="form-control"  onChange={(e) => this.handleChange(e , 'interested_in')}>
+                                {getInterestedContent()}
+                            </select>
+                            <span class="error"></span>
+                        </div>
+                        
+                        {this.state.showArea && <div className="form-group">
+                            {!this.state.error['area'].status && <span class="error">{this.state.error['area'].message}</span>}                    
+                            <input type="number" className="form-control" name="area" id="area" placeholder="Area in sq ft if known" value={this.state.fields.area} onChange={(e) => this.handleChange(e , 'area')} />
+                        </div>}
+                        <div className="form-group">
+                            {!this.state.error['location'].status && <span class="error">{this.state.error['location'].message}</span>}                    
+                            <input type="text" className="form-control" name="location" id="location" placeholder="Enter Location" value={this.state.fields.location} onChange={(e) => this.handleChange(e , 'location')} />
+                        </div>
+                        <div className="form-group">
+                            {!this.state.error['ref_PINID'].status && <span class="error">{this.state.error['ref_PINID'].message}</span>}                    
+                            <input type="text" className="form-control" name="ref_PINID" id="ref_PINID" placeholder="Reference PINID if any" value={this.state.fields.ref_PINID} onChange={(e) => this.handleChange(e , 'ref_PINID')} />
                         </div>
 
                         <div className="">
-                            <button className="btn btn-danger form-control" onClick={() => this.finalSubmit()} disabled={this.state.showButton}>Submit</button>
+                            <button className={`${!this.state.showButton ? 'btn_disabled' : ''} btn btn-danger form-control`} onClick={() => this.finalSubmit()}>Submit</button>
                         </div>
                     </div> : 
                     <div className="content">
