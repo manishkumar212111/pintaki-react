@@ -37,7 +37,7 @@
     "gulp-autoprefixer": "latest",
     "gulp-csso": "^2.0.0",
     "gulp-htmlmin": "^3.0.0",
-    "gulp-sass": "^2.0.0",
+    "gulp-sass": "^3.0.0",
     "gulp-uglify": "^2.0.0",
     "querystring": "^0.2.0",
     "react": "^16.11.0",
