@@ -1,4 +1,4 @@
 export default {
-    baseUrl : "http://localhost:3000/",
-    apiBaseUrl : "http://localhost:9000/"
+    baseUrl : "http://api.pintaki.in/",
+    apiBaseUrl : "http://api.pintaki.in/"
 }
