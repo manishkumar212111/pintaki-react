@@ -1,6 +1,7 @@
 import React , {Fragment} from 'react';
 import Card from './Card';
 import CLink from '../elements/CLink';
+import Card_For_Leads from './Cards_For_Leads';
 
 const defaultProps = {
     outerClass : "",
@@ -21,7 +22,7 @@ export default class CardList extends React.Component {
         const getContentList = (items) => {
             let h = [];
 			items.items && items.items.map((item) => {
-				h.push(<Card 
+				h.push(<Card_For_Leads 
 					items = {item}
 					innerClass = "setimagewidth"
 				/>)

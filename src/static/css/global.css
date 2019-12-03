@@ -60,7 +60,10 @@ a {
   .inonerow{
     display: flex;
     flex-flow: row;
-    overflow: scroll;;   
+    overflow: scroll;
+    width: 100%; 
+    box-shadow: 0px 0px 10px #80808059;
+    padding-top: 10px;
    }
    /* .setimagewidth{
     width:240px
@@ -178,6 +181,7 @@ a {
         .popup{
           width: 90%;
         }
+       
       }
       @media screen and (min-width:768px) and (max-width:1400px) {
         .popup {
@@ -193,7 +197,7 @@ a {
 
     .set_card_layout {
       padding: 0;
-      box-shadow: 0px 0px 10px #8080804f;
+      box-shadow: 0px 0px 10px #13121242;
       border-radius: 20px;
       min-width: 240px;
   }
@@ -204,4 +208,226 @@ a {
     border-color: white !important;
   }
 
+
       
+  /* css for cards images design */
+
+
+
+  .image-grid {
+    /* display: flex; */
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    /* max-width: 80%; */
+    /* height: 100%; */
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+    margin-bottom: 0px;
+  }
+  .image-grid__item {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 0;
+    flex-shrink: 0;
+    /* flex-basis: 360px; */
+    align-items: stretch;
+    border-radius: 8px;
+    justify-content: center;
+    position: relative;
+    height: 350px;
+    transition: text-shadow 0.1s ease-in, -webkit-transform 0.14s ease-in;
+    transition: transform 0.14s ease-in, text-shadow 0.1s ease-in;
+    transition: transform 0.14s ease-in, text-shadow 0.1s ease-in,
+      -webkit-transform 0.14s ease-in;
+    background-color: #000000;
+    border-radius: 8px;
+  }
+  .image-grid__item:before {
+    content: "";
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: none;
+    border-radius: 3px;
+    box-shadow: 0 10px 24px 0px rgba(0, 0, 0, 0.06),
+      0 8px 20px -2px rgba(0, 0, 0, 0.1), 0 6px 10px -6px rgba(0, 0, 0, 0.2);
+    transition: visibility 0.1s ease-out, opacity 0.1s ease-out;
+    opacity: 0;
+  }
+  .image-grid__item:hover:before {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  .grid-item {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 1;
+    align-items: stretch;
+    justify-content: center;
+    text-decoration: none;
+    color: #eeeeee;
+    overflow: hidden;
+  }
+  .grid-item:hover .grid-item__image {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+  .grid-item:hover .grid-item__hover {
+    visibility: visible;
+    opacity: 1;
+  }
+  .grid-item:hover .grid-item__name {
+    visibility: visible;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+  .grid-item:hover .grid-item__image {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+  .grid-item__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center center;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    will-change: transform;
+    transition: -webkit-transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      -webkit-transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 0;
+    /* background:linear-gradient(to right ,#2d06064d , #d03144dd);
+    opacity: 0.75; */
+    background: linear-gradient(to right, #1f1d1d4d, #565454dd);
+    opacity: 0.75;
+    border-radius: 5px;
+  }
+  .grid-item__image:before {
+    position: absolute;
+    content: " ";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 0;
+    /* background-color: rgba(255,0,0,0.5); */
+    background: linear-gradient(to right, #271e1e00, #1d06154a);
+    opacity: 0.9;
+  }
+  
+  .h2sss {
+    position: absolute;
+    bottom: 0px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding-left: 10px;
+    width: 90%;
+  }
+  .titless {
+    position: absolute;
+    /* width: 500px; */
+    top: 0;
+    padding-left: 10px;
+    /* margin-top: -1px; */
+    /* top: 120px; */
+    font-weight: bold;
+    font-size: 18px;
+    /* text-align: center; */
+    /* text-transform: uppercase; */
+    color: white;
+    z-index: 1;
+    transition: top 0.5s ease;
+  }
+  .grid-item__name {
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 1;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 300;
+    text-shadow: 0px 0px 30px rgba(0, 0, 0, 0.4), 2px 2px 6px rgba(0, 0, 0, 0.3);
+    justify-content: center;
+    letter-spacing: 1px;
+    -webkit-transform: scale(0.6);
+    transform: scale(0.6);
+    -webkit-transform-origin: center center;
+    transform-origin: center center;
+    transition: visibility 0.14s ease-out, opacity 0.14s ease-out,
+      -webkit-transform 0.24s ease;
+    transition: visibility 0.14s ease-out, opacity 0.14s ease-out,
+      transform 0.24s ease;
+    transition: visibility 0.14s ease-out, opacity 0.14s ease-out,
+      transform 0.24s ease, -webkit-transform 0.24s ease;
+    opacity: 0;
+  }
+  .grid-item__name:after {
+    content: "";
+    width: 0;
+    height: 0;
+    -webkit-transform: rotate(360deg);
+    border-style: solid;
+    border-width: 0 0 0 0;
+    border-color: transparent transparent transparent #20212138;
+  
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  .grid-item__name:before {
+    content: "";
+    width: 0;
+    height: 0;
+    -webkit-transform: rotate(360deg);
+    border-style: solid;
+    border-width: 0 0 0 0;
+    border-color: transparent transparent transparent #20212138;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+ 
+ .post_topic{
+  font-family: Montserrat;
+  font-size: 18px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.21;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000;
+  margin-bottom: 16px;
+  padding:10px 15px;
+  
+ }
+.toppost_bottoms{
+  padding: 8px;
+  background-color: white;
+  border-radius: 0px 0px 8px 8px;
+
+}
+  @media screen and (min-width:200px) and (max-width:500px) {
+    .image-grid__item{
+      height: 250px;
+    }
+  }

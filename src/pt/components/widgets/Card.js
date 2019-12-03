@@ -23,6 +23,9 @@ export default class Card extends React.Component{
                             <div class={`inner-img ${props.innerClass}`}>
                               
                                 <LazyImage src={items.coverImage} alt={items.title} height={props.imgHeight}/>
+                                {/* changes in card for design */}
+                                
+                                {/* changes ends here */}
                             </div>
                             <h5>{items.short_description}</h5></CLink>
                             {items.price && <span class="price-box"><i class="fa fa-inr" aria-hidden="true"></i> {items.price}</span>}
