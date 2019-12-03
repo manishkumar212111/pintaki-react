@@ -21,8 +21,6 @@ export default class Card_For_Leads extends React.Component{
                         <div class="m-2 project-box set_card_layout ">
                         <CLink href={items.url} default={true}>
                             <div class={`inner-img ${props.innerClass}`}>
-                              
-                                {/* <LazyImage src={items.coverImage} alt={items.title} height={props.imgHeight}/> */}
                                 {/* changes in card for design */}
                                 <ul className="image-grid">
                         <li className="image-grid__item">
@@ -34,7 +32,7 @@ export default class Card_For_Leads extends React.Component{
                                 backgroundSize: "cover"
                               }}
                             />
-                            <p class="titless">{/*Card Title*/}</p>
+                            <p class="titless"><i class="fa fa-heart" aria-hidden="true"></i></p>
                             <p class="h2sss"> {/*val.title*/} </p>
                             {/* <div className="grid-item__hover"></div> */}
                             <div className="grid-item__name">

@@ -344,7 +344,7 @@ a {
   .titless {
     position: absolute;
     /* width: 500px; */
-    top: 0;
+    top: 10px;
     padding-left: 10px;
     /* margin-top: -1px; */
     /* top: 120px; */
@@ -352,7 +352,7 @@ a {
     font-size: 18px;
     /* text-align: center; */
     /* text-transform: uppercase; */
-    color: white;
+    color: red;
     z-index: 1;
     transition: top 0.5s ease;
   }
