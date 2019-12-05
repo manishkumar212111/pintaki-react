@@ -24,7 +24,8 @@ export default class CardList extends React.Component {
 			items.items && items.items.map((item) => {
 				h.push(<Card_For_Leads 
 					items = {item}
-					innerClass = "setimagewidth"
+                    innerClass = "setimagewidth"
+                    like_unlike={true}
 				/>)
 			})
 			return h;
