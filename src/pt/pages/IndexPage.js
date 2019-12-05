@@ -9,6 +9,7 @@ import CLink from '../components/elements/CLink';
 import Simmer from '../components/elements/Simmer';
 import PropTypes from 'prop-types';
 import CardList from '../components/widgets/CardList';
+import GoogleLogin from '../components/widgets/GoogleLogin';
 
 const defaultProps = {
 	activeIndex : 0,
@@ -119,6 +120,7 @@ console.log("Testinh");
 		const homeContainer = () =>{
 			return(
 				<section className="content-box">
+						<GoogleLogin />
 						<CardList 
 							items={this.state.projects} 
 							title= "Our Projects"
