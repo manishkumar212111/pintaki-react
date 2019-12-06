@@ -136,7 +136,7 @@ export default class IndexPage extends React.Component {
 		return(
 			<div class="main">
 				{homeContainer()}
-				>GoogleLogin />		
+				<GoogleLogin />		
 			</div>
 			
 		);
