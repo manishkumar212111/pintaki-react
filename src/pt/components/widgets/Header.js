@@ -4,6 +4,7 @@ import {menuMobile ,menuDesktop} from '../../../data/menu'
 import LazyImage from '../elements/LazyImage';
 // import detect from '../../utils/detect';
 import Leads from '../../components/widgets/Leads';
+import GoogleLogin from '../../components/widgets/GoogleLogin';
 
 export default class MobiHeader extends React.Component {
     constructor(props) {
@@ -12,6 +13,16 @@ export default class MobiHeader extends React.Component {
         this.handleNavigationClick = this.handleNavigationClick.bind(this)
         this.handleFormOpen = this.handleFormOpen.bind(this);
         this.closeCallBack = this.closeCallBack.bind(this);
+    }
+    componentDidMount(){
+        if(typeof window != 'undefined'){
+            let location = window.location && window.location.hash;
+            if(location && location.indexOf('#login') > -1){
+                this.setState({ 
+                    showLogin : true
+                })
+            }            
+        }
     }
     handleFormOpen() {
         this.setState({
@@ -59,6 +70,7 @@ export default class MobiHeader extends React.Component {
             
                         </div>}
                     </nav>
+                    {this.state.showLogin && <GoogleLogin />}
                     {this.state.openForm && <Leads openForm={true} closeCallBack={this.closeCallBack} />}
             </header>
 

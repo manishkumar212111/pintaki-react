@@ -9,7 +9,6 @@ import CLink from '../components/elements/CLink';
 import Simmer from '../components/elements/Simmer';
 import PropTypes from 'prop-types';
 import CardList from '../components/widgets/CardList';
-import GoogleLogin from '../components/widgets/GoogleLogin';
 
 const defaultProps = {
 	activeIndex : 0,
@@ -136,7 +135,6 @@ export default class IndexPage extends React.Component {
 		return(
 			<div class="main">
 				{homeContainer()}
-				<GoogleLogin />		
 			</div>
 			
 		);
