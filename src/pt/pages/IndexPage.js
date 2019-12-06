@@ -121,7 +121,7 @@ export default class IndexPage extends React.Component {
 						<CardList 
 							items={this.state.projects} 
 							title= "Our Projects"
-							showLikeUnlike = {true}
+							showLeadButton = {true}
 							viewAllLink = "/projects/list"
 						/>
 						<CardList 

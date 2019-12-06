@@ -26,7 +26,8 @@ export default class CardList extends React.Component {
 				h.push(<Card 
 					items = {item}
                     innerClass = "setimagewidth"
-                    like_unlike={props.showLikeUnlike}
+                    // like_unlike={props.showLikeUnlike}
+                    showLeadButton = {props.showLeadButton}
 				/>)
 			})
 			return h;

@@ -2,6 +2,7 @@ import React , {Fragment} from 'react';
 import LazyImage from '../elements/LazyImage';
 import CLink from '../elements/CLink'
 import Like_Unlike from '../elements/Like_Unlike';
+import Leads from '../../components/widgets/Leads';
 
 const defaultProps = {
     viewALlTitle : "View All",
@@ -9,11 +10,21 @@ const defaultProps = {
     headerTitle : "New projects",
     imgHeight : 'auto',
     innerClass : "",
+    showLeadButton : false
 }
 export default class Card extends React.Component{
     constructor(props){
         super(props);
+        this.state = props;
+        this.handleLeadClick = this.handleLeadClick.bind(this);
     }
+
+    handleLeadClick(flag) {
+        this.setState({
+            showLeadForm : flag
+        })
+    }
+
     render(){
         const props = this.props;
         let items = props.items;
@@ -30,10 +41,11 @@ export default class Card extends React.Component{
                             </div>
                             <h5>{items.short_description}</h5></CLink>
                             {items.price && <span class="price-box"><i class="fa fa-inr" aria-hidden="true"></i> {items.price}</span>}
-                            <div className="lead-btn-box">
-                                    <button type="button" className="lead_btn" >Know More</button>
-                                    {props.like_unlike && <Like_Unlike items= {{ id : items.id}} like={false} />}
-                            </div>
+                            {this.state.showLeadButton && <div className="lead-btn-box">
+                                    <button type="button" onClick={(e) => this.handleLeadClick(true)} className="lead_btn" >Know More</button>
+                                    <Like_Unlike items= {{ id : items.id}} like={false} />
+                            </div>}
+                            {this.state.showLeadForm && <Leads openForm={true} closeCallBack={this.handleLeadClick} />}
 
                         </div>
 
