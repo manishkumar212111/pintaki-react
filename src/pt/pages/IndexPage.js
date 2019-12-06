@@ -101,7 +101,6 @@ export default class IndexPage extends React.Component {
 	}
 
 	render(){
-console.log("Testinh");
 		if(this.state.shimmer){
 			return(<Simmer />)
 		}
@@ -122,6 +121,7 @@ console.log("Testinh");
 						<CardList 
 							items={this.state.projects} 
 							title= "Our Projects"
+							showLikeUnlike = {true}
 							viewAllLink = "/projects/list"
 						/>
 						<CardList 
@@ -129,18 +129,6 @@ console.log("Testinh");
 							title= "Our Blogs"
 							viewAllLink = "/blogs/list"
 						/>
-						
-						{/* <div>
-							<div className ="header-inner">
-								<h4>Blogs <CLink default= {true} href="/blogs/list" className="theme-btn">View All</CLink></h4>
-							</div>
-							<div className = "row">
-								<div className="inonerow">{getContentList({items : this.state.blogs})} </div>
-								
-							</div>
-						</div> */}
-							{/* </section> */}
-						{/* </div> */}
 				</section>
 			);
 		}		
@@ -148,7 +136,6 @@ console.log("Testinh");
 		return(
 			<div class="main">
 				{homeContainer()}
-				{/* {detect.isMobile() && <Tabin items={FooterMenuMobile } index ={this.state.activeIndex} handleTabinClick = {this.handleTabinClick}/>}	 */}
 			</div>
 			
 		);

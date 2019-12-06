@@ -1,6 +1,7 @@
 import React , {Fragment} from 'react';
 import LazyImage from '../elements/LazyImage';
 import CLink from '../elements/CLink'
+import Like_Unlike from '../elements/Like_Unlike';
 
 const defaultProps = {
     viewALlTitle : "View All",
@@ -19,7 +20,7 @@ export default class Card extends React.Component{
         return(<Fragment>
                     <div class="col-md-3 p-0  ">
                         <div class="m-2 project-box set_card_layout ">
-                        <CLink href={items.url} default={true}>
+                            <CLink href={items.url} default={true}>
                             <div class={`inner-img ${props.innerClass}`}>
                               
                                 <LazyImage src={items.coverImage} alt={items.title} height={props.imgHeight}/>
@@ -29,7 +30,13 @@ export default class Card extends React.Component{
                             </div>
                             <h5>{items.short_description}</h5></CLink>
                             {items.price && <span class="price-box"><i class="fa fa-inr" aria-hidden="true"></i> {items.price}</span>}
+                            <div className="lead-btn-box">
+                                    <button type="button" className="lead_btn" >Know More</button>
+                                    {props.like_unlike && <Like_Unlike items= {{ id : items.id}} like={false} />}
+                            </div>
+
                         </div>
+
                     </div>
                 
             </Fragment>

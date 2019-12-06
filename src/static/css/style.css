@@ -430,3 +430,25 @@ ul.info {
     width: 100%;
     border-radius: 15px 15px 0 0;
 }
+
+/* # for leads button
+ */
+
+ button.lead_btn {
+    background: white;
+    width: 75%;
+    margin: 3px 8px 10px 15px;
+    border-color: darkorange;
+    border-radius: 10px;
+    border-width: 1px;
+    font-size: 18px;
+}
+
+.lead-btn-box i.fa.fa-heart-o {
+    font-size: 26px;
+}
+
+.lead-btn-box i.fa.fa-heart {
+    font-size: 26px;
+    color : red;
+}

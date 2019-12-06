@@ -26,6 +26,10 @@ export default {
     ContactAPI : {
         url : 'api/v1/contacts?',
         options: {}    
+    },
+    GoogleAuthAPI : {
+        url : 'api/v1/auth?',
+        options : {}
     }
     
 }

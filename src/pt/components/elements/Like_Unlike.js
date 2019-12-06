@@ -1,13 +1,18 @@
-import React from 'react';
-
+import React , {useState} from 'react';
+import global from '../../utils/globals'
 
 const Like_Unlike = (props)=>{
-    return(
-        <div>
-          {props.like? <i class="fa fa-heart" aria-hidden="true"></i> 
-          :
-            <i class="fa fa-heart-o" aria-hidden="true"></i>}
-        </div>
+    let [like , setLike] = useState(props.like);
+    let handleClick = () => {
+        let remember_digest = global.checkUserLogin();
+        if(remember_digest){
+            
+            setLike(!like);
+        }
+    }
+    return (
+        <i class={`fa ${like ? "fa-heart" : "fa-heart-o"}`} aria-hidden="true" onClick={handleClick}></i>
     )
+    
 }
 export default Like_Unlike;

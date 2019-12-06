@@ -1,3 +1,4 @@
+import { browserHistory } from 'react-router';
 const globals = {
     setCookie(cname, cvalue, exdays, sessionCookieFlag, encodeFlag) {//to remove cookie, cvalue="",exdays=-1
         if (cname !== undefined && cvalue !== undefined && typeof cvalue !== 'function') {
@@ -29,6 +30,15 @@ const globals = {
         }
         return "";
     },
+    checkUserLogin(){
+        let data = localStorage.getItem('userData');
+        if(data){
+            return JSON.parse(data).remember_digest;
+        }
+        browserHistory.push('#login');
+        location.reload();
+        return false;
+    }
 
 }
 

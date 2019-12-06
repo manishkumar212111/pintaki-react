@@ -1,11 +1,12 @@
 import React , {Fragment} from 'react';
 import Card from './Card';
 import CLink from '../elements/CLink';
-import Card_For_Leads from './Cards_For_Leads';
+// import Card_For_Leads from './Cards_For_Leads';
 
 const defaultProps = {
     outerClass : "",
-    innerclass : ''
+    innerclass : '',
+    showLikeUnlike : false
 }
 
 export default class CardList extends React.Component {
@@ -22,10 +23,10 @@ export default class CardList extends React.Component {
         const getContentList = (items) => {
             let h = [];
 			items.items && items.items.map((item) => {
-				h.push(<Card_For_Leads 
+				h.push(<Card 
 					items = {item}
                     innerClass = "setimagewidth"
-                    like_unlike={true}
+                    like_unlike={props.showLikeUnlike}
 				/>)
 			})
 			return h;
