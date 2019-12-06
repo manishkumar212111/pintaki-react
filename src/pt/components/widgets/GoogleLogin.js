@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import configs from '../../configs/configs'; 
-
+import API from '../../utils/Api'
 const defaultProps = {
     showButton : true
 }
@@ -15,8 +15,12 @@ class GoogleLogin extends Component {
     }
 
     componentDidMount() {
-        this.googleSDK();
-        console.log('sfsfd');
+        let data = localStorage.getItem('userData');
+        if(data){
+            this.setState({ showButton : false })
+        } else {
+            this.googleSDK();
+        }
     }
     closeCallBack() {
         this.setState({
@@ -26,28 +30,35 @@ class GoogleLogin extends Component {
 
     prepareLoginButton(self){
  
-    console.log(this.refs.googleLoginBtn);
- 
     this.auth2.attachClickHandler(this.refs.googleLoginBtn, {},
         (googleUser) => {
- 
-        let profile = googleUser.getBasicProfile();
-        console.log('Token || ' + googleUser.getAuthResponse().id_token);
-        console.log('ID: ' + profile.getId());
-        console.log('Name: ' + profile.getName());
-        console.log('Image URL: ' + profile.getImageUrl());
-        console.log('Email: ' + profile.getEmail());
-        
+
+        self.setState({loader : true});    
+        API.POSTAPI("GoogleAuthAPI" , {id_token : googleUser.getAuthResponse().id_token} , false).then((res) =>{
+            if(res.status && res.status == 200){
+                localStorage.setItem("userData" , JSON.stringify(res.data));
+                self.setState({
+                    showButton : false,
+                    message : "logged in success",
+                    loader : false
+                })                 
+            } else {
+                self.setState({
+                    message : "try again",
+                    loader: false
+                })
+            }
+        })
         }, (error) => {
             self.setState({
-                message : "try again"
+                message : "try again",
+                loader:false
             }) 
-            alert(JSON.stringify(error, undefined, 2));
+            console.error(JSON.stringify(error, undefined, 2));
         });
     }
  
     googleSDK(){
-        console.log(configs.google_client_id);
         let self = this;
         window['googleSDKLoaded'] = () => {
           window['gapi'].load('auth2', () => {
@@ -78,14 +89,14 @@ class GoogleLogin extends Component {
                 <div className="popup">
                     {/* <h2 className="text-left"></h2> */}
                     <span onClick={() => this.closeCallBack()} class="close">&times;</span>                    
-                    <div className="content">
+                    {!this.state.loader ? <div className="content">
                         <div className="col-md-8 m-auto ">
                             <button className="loginBtn loginBtn--google" ref="googleLoginBtn">
                                 Login with Google
                             </button>
                             {this.state.message && <span className="error">{this.state.message}</span>}
                         </div>
-                    </div>
+                    </div> : 'Logging in ...'}
                 </div>
             </div>
         );
@@ -94,9 +105,3 @@ class GoogleLogin extends Component {
  
 GoogleLogin.defaultProps = defaultProps;
 export default GoogleLogin;
-
-
-/* https://oauth2.googleapis.com/tokeninfo?id_token=
-
-usersTable : (id , name , email , mobile , password , remember_digest , is_logged_in, status , role )
-*/
