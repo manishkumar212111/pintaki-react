@@ -30,6 +30,28 @@ const globals = {
         }
         return "";
     },
+    getServerSideCookie(cookie , key) {
+        try {
+            if(cookie){
+                let data = cookie.split(';');
+                if(data.length > 0){
+                    for(var i in data){
+                        if(data[i].indexOf(key+'=') !== -1){
+                            return data[i].split('=')[1];
+                        }
+                    }
+                }
+            }
+            return '';
+        } catch (e) {
+            console.log("ERR: Globals.getcookie: ", e.toString());
+        }
+        return "";
+    },
+    stringToJson(input) {
+        input = input && input.slice(0, -1).replace(/\\"/g, '"').replace(/\\\\/g, '\\');
+        return input;
+    },
     checkUserLogin(){
         let data = localStorage.getItem('userData');
         if(data){

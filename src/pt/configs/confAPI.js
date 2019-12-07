@@ -30,6 +30,13 @@ export default {
     GoogleAuthAPI : {
         url : 'api/v1/auth?',
         options : {}
+    },
+    WishListPost : {
+        url : 'api/v2/product/wishlist?',
+        options : {}    
+    },
+    WishListGet : {
+        url : 'api/v2/product/list/wishlist?',
+        options : {}    
     }
-    
 }

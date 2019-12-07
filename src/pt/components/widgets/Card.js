@@ -10,7 +10,8 @@ const defaultProps = {
     headerTitle : "New projects",
     imgHeight : 'auto',
     innerClass : "",
-    showLeadButton : false
+    showLeadButton : false,
+    likedAll : false
 }
 export default class Card extends React.Component{
     constructor(props){
@@ -43,7 +44,7 @@ export default class Card extends React.Component{
                             {items.price && <span class="price-box"><i class="fa fa-inr" aria-hidden="true"></i> {items.price}</span>}
                             {this.state.showLeadButton && <div className="lead-btn-box">
                                     <button type="button" onClick={(e) => this.handleLeadClick(true)} className="lead_btn" >Know More</button>
-                                    <Like_Unlike items= {{ id : items.id}} like={false} />
+                                    <Like_Unlike items= {{ product_id : items.id}} like={items.liked} />
                             </div>}
                             {this.state.showLeadForm && <Leads openForm={true} closeCallBack={this.handleLeadClick} />}
 

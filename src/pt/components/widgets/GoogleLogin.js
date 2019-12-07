@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import configs from '../../configs/configs'; 
-import API from '../../utils/Api'
+import API from '../../utils/Api';
+import global from '../../utils/globals';
+
 const defaultProps = {
     showButton : true
 }
@@ -37,6 +39,9 @@ class GoogleLogin extends Component {
         API.POSTAPI("GoogleAuthAPI" , {id_token : googleUser.getAuthResponse().id_token} , false).then((res) =>{
             if(res.status && res.status == 200){
                 localStorage.setItem("userData" , JSON.stringify(res.data));
+                delete res.data.profile_image;
+                global.setCookie('userData' , JSON.stringify(res.data));
+                
                 self.setState({
                     showButton : false,
                     message : "logged in success",

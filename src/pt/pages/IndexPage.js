@@ -18,6 +18,7 @@ const defaultProps = {
 	projects : {},
 	chunkJs : 'IndexPage'
 }
+
 var getData = (res) => {
 	let o = {
 		activeIndex : 0,

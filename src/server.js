@@ -22,7 +22,7 @@ app.use(Express.static(path.join(__dirname, 'static')));
 
 class DataProvider extends React.Component {
   getChildContext() {
-      return {data: this.props.data};
+      return {data: this.props.data };
   }
   render() {
       return <RouterContext {...this.props}/>;
@@ -52,6 +52,7 @@ app.get('*', (req, res) => {
       if (redirectLocation) {
         return res.redirect(302, redirectLocation.pathname + redirectLocation.search);
       }
+      renderProps.serverCookie= JSON.stringify(req.headers.cookie);
       if(typeof renderProps.components[1].fetchData !== 'undefined'){
           renderProps.components[1].fetchData(renderProps , (data) => {
           let configs = data; 

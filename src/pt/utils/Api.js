@@ -30,13 +30,13 @@ const API  = {
         });    
     },
 
-    POSTAPI : function(apiKey , options , direct) {
-        let o = this.getUrl(apiKey, options, direct);
+    POSTAPI : function(apiKey , options , direct , remember_digest) {
+        let o = this.getUrl(apiKey, {remember_digest : remember_digest} , direct);
 		let conf = {
             headers: { 
                 'Content-Type': 'application/json'
             }}
-		return axios.post(o.url,JSON.stringify(options) , conf)
+		return axios.post(o.url + '&' +  o.qs , JSON.stringify(options) , conf)
 	  		.then(res => {
 	  			if (res.status == 200) {
 		    		return res.data;
