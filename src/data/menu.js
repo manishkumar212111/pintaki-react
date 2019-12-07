@@ -8,8 +8,8 @@ const menuMobile = [
 const menuDesktop = [
     { name: "Home", link: "/", title: "Home", class: "nav-link", isNew: "", default: true, _blank: false },
     { name: "About Us", link: "/about", title: "About Us", class: "nav-link", isNew: "", default: true, _blank: false },
-    { name: "Services", link: "#", title: "Services", class: "nav-link", isNew: "", default: true, _blank: false },    
-    { name: "Our Projects", link: "/projects/list", title: "Blogs", class: "nav-link", isNew: "", default: true, _blank: false },        
+    { name: "Services", link: "/services", title: "Services", class: "nav-link", isNew: "", default: true, _blank: false },    
+    { name: "Our Projects", link: "/projects/list", title: "Projects", class: "nav-link", isNew: "", default: true, _blank: false },        
     { name: "Blogs", link: "/blogs/list", title: "Blogs", class: "nav-link", isNew: "", default: true, _blank: false },
     { name: "Contact Us", link: "/contact", title:  "Contact Us", class: "nav-link", isNew: "", default: true, _blank: false },
 ]

@@ -80,7 +80,32 @@ export default class MobiHeader extends React.Component {
 export class DesktopHeader extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { expandMenu : false}
+        this.state = props;
+        this.handleFormOpen = this.handleFormOpen.bind(this);
+        this.closeCallBack = this.closeCallBack.bind(this);
+
+    }
+    componentDidMount(){
+        if(typeof window != 'undefined'){
+            let location = window.location && window.location.hash;
+            if(location && location.indexOf('#login') > -1){
+                this.setState({ 
+                    showLogin : true
+                })
+            }            
+        }
+    }
+
+    handleFormOpen() {
+        this.setState({
+            openForm : true
+        })        
+    }
+
+    closeCallBack(){
+        this.setState({
+            openForm : false
+        })
     }
     
     render(){ 
@@ -120,7 +145,9 @@ export class DesktopHeader extends React.Component {
                         </div>
                     </nav>
                 </div>
-                
+                {this.state.showLogin && <GoogleLogin />}
+                {this.state.openForm && <Leads openForm={true} closeCallBack={this.closeCallBack} />}
+            
             </header>
 
         );}
