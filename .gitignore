@@ -41,3 +41,10 @@ babel_cache
 
 # JS file 
 /src/static/js/*
+
+#css files
+/src/static/css/main.css
+/src/static/css/mobile.css
+/src/static/css/pages/*.css
+/src/static/pwa/css/*.css
+
