@@ -16,6 +16,9 @@
   },
   "author": "Luciano Mammino",
   "license": "MIT",
+  "engines": {
+    "node": "9.6.0"
+  },
   "dependencies": {
     "axios": "^0.19.0",
     "babel-cli": "^6.26.0",
