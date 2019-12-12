@@ -22,9 +22,6 @@ function LazyImage(props){
         )
     }else{
         let temp = props;
-        delete temp.height;
-        delete temp.loaderClass;
-        delete temp.lazy
         return(
             <img {...temp}></img>
         )
