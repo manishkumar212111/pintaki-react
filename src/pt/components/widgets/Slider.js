@@ -58,8 +58,8 @@ export default class Slider extends React.Component{
             return null;
             
         return (
-            <div className={`{props.outerDivCls} `}>
-                <div className = {`{props.innerDivCls} `} onTouchStart={(e) => this.onTouchStart(e)} onTouchEnd={(e) => this.onTouchEnd(e)}>
+            <div className={`${props.outerDivCls} `}>
+                <div className = {`${props.innerDivCls} `} onTouchStart={(e) => this.onTouchStart(e)} onTouchEnd={(e) => this.onTouchEnd(e)}>
                     { images && images[this.state.activeIndex] &&
                         <LazyImage 
                             src={images[this.state.activeIndex].src} 
@@ -80,3 +80,27 @@ export default class Slider extends React.Component{
 }
 
 Slider.defaultProps = defaultProps;
+
+
+// demo component call
+{/* <Slider 
+				images = {[
+					{
+						src : "/images/img1.png",
+						title : "image1"
+					},
+					{
+						src : "/images/img1.png",
+						title : "image2"
+					},
+					{
+						src : "/images/img1.png",
+						title : "image3"
+					},
+					{
+						src : "/images/img1.png",
+						title : "image4"
+					}
+				]}
+				
+				/> */}

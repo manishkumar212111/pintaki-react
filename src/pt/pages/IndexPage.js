@@ -9,7 +9,6 @@ import CLink from '../components/elements/CLink';
 import Simmer from '../components/elements/Simmer';
 import PropTypes from 'prop-types';
 import CardList from '../components/widgets/CardList';
-import Slider from '../components/widgets/Slider';
 
 const defaultProps = {
 	activeIndex : 0,
@@ -137,27 +136,7 @@ export default class IndexPage extends React.Component {
 
 		return(
 			<div class="main">
-				<Slider 
-				images = {[
-					{
-						src : "/images/img1.png",
-						title : "image1"
-					},
-					{
-						src : "/images/img1.png",
-						title : "image2"
-					},
-					{
-						src : "/images/img1.png",
-						title : "image3"
-					},
-					{
-						src : "/images/img1.png",
-						title : "image4"
-					}
-				]}
 				
-				/>
 				{homeContainer()}
 			</div>
 			
