@@ -14,6 +14,8 @@ var filtermq = require("postcss-filter-mq");
  var cleanCSS = require('gulp-clean-css');
  var rename = require('gulp-rename');
  var hash = require('gulp-hash');
+ var clean = require('gulp-clean');
+
 
 
 
@@ -41,6 +43,17 @@ gulp.task('styles', function () {
       // Output
       .pipe(gulp.dest('./src/static'))
   });
+
+  gulp.task('clean-scripts', function () {
+    return gulp.src([
+        './src/static/pwa/css/**/*.css',
+        './src/static/css/**/*.css'
+    ], {
+        read: false,
+        force: true
+    })
+    .pipe(clean());
+});
 
   gulp.task('sass:prod', function () {
     return gulp.src([
@@ -107,6 +120,7 @@ gulp.task( "css:mq", function () {
 
   gulp.task('default', function () {
     runSequence(
+      //"clean-scripts",
       'sass:prod',// 'sass-amp' please add this when merge in CD
       'css:mq',
       ['minifycss',/*'ampminifycss'*/],
